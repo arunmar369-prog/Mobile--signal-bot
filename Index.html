@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Forex Signal Bot</title>
+<style>
+body {
+  margin: 0;
+  padding: 16px;
+  background: #101827;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.card {
+  background: #1e293b;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+h1 { color: #38bdf8; font-size: 24px; }
+label { display: block; margin: 12px 0 6px; }
+select, button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+button {
+  margin-top: 15px;
+  background: #0284c7;
+  color: white;
+  border: none;
+}
+.signal {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #facc15;
+}
+.small { color: #cbd5e1; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>📊 Forex Signal Bot</h1>
+  <p>Mode: Signal Only | Timeframe: 1 Minute</p>
+  <p id="status">स्थिति: डेटा कनेक्ट नहीं है</p>
+</div>
+
+<div class="card">
+  <label for="pair">Forex Pair चुनें:</label>
+  <select id="pair">
+    <option value="EUR/USD">EUR/USD</option>
+    <option value="GBP/USD">GBP/USD</option>
+    <option value="USD/JPY">USD/JPY</option>
+    <option value="AUD/USD">AUD/USD</option>
+    <option value="USD/CAD">USD/CAD</option>
+    <option value="USD/CHF">USD/CHF</option>
+  </select>
+
+  <button onclick="showDemo()">डैशबोर्ड टेस्ट करें</button>
+</div>
+
+<div class="card">
+  <p>चुना हुआ Pair: <strong id="selected">EUR/USD</strong></p>
+  <p>सिग्नल:</p>
+  <div class="signal" id="signal">WAIT</div>
+  <p id="time">अभी कोई लाइव सिग्नल नहीं</p>
+  <p class="small">
+    यह केवल डैशबोर्ड टेस्ट है। वास्तविक मार्केट डेटा कनेक्ट नहीं है।
+  </p>
+</div>
+
+<script>
+document.getElementById("pair").addEventListener("change", function() {
+  document.getElementById("selected").textContent = this.value;
+  document.getElementById("signal").textContent = "WAIT";
+  document.getElementById("time").textContent =
+    "नए Pair के लिए लाइव डेटा कनेक्शन बाकी है";
+});
+
+function showDemo() {
+  document.getElementById("signal").textContent = "WAIT";
+  document.getElementById("status").textContent =
+    "स्थिति: डैशबोर्ड टेस्ट सफल";
+  document.getElementById("time").textContent =
+    "डेमो मोड — यह वास्तविक ट्रेडिंग सिग्नल नहीं है";
+}
+</script>
+
+</body>
+</html>
